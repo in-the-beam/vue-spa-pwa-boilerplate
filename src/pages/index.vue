@@ -18,10 +18,10 @@ export default {
   }),
   computed: mapGetters({
   }),
-  created(){
+  created () {
     this.pageTitle = this.$router.currentRoute.name
   },
-  methods:{
+  methods: {
   }
 }
 </script>

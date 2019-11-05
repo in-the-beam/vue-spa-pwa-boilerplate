@@ -18,6 +18,11 @@ const modules = requireContext.keys()
     return { ...modules, [name]: module }
   }, {})
 
-export default new Vuex.Store({
+const _store = new Vuex.Store({
   modules
 })
+
+export default _store
+export {
+  _store as store
+}

@@ -1,15 +1,16 @@
 import Vue from 'vue'
-import App from './App.vue'
+import store from '@/store'
+import { i18n, loadMessages } from '@/plugins/i18n'
+import VueI18n from 'vue-i18n'
 import router from './router'
 import './registerServiceWorker'
-//import VueI18n from 'vue-i18n'
-//import Vuex from 'vuex'
+import App from './App.vue'
 
-//Vue.use(Vuex)
-//Vue.use(VueI18n)
+Vue.use(VueI18n)
 
-import store from '@/store'
-import i18n from '@/plugins/i18n'
+;(async function () {
+  await loadMessages(store.getters['lang/locale'])
+})()
 
 Vue.config.productionTip = false
 
@@ -17,6 +18,5 @@ new Vue({
   router,
   store,
   i18n,
-//  render: h => h(App),
   ...App
-})//.$mount('#app')
+})

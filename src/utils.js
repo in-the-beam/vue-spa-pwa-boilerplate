@@ -2,8 +2,8 @@
  * @param str
  * @returns {*}
  */
-function translit ( str ) {
-  let from = [
+function translit (str) {
+  const from = [
     'ж',
     'ё',
     'й',
@@ -72,7 +72,7 @@ function translit ( str ) {
     'Ъ',
     ' '
   ]
-  let replaceTo = [
+  const replaceTo = [
     'zh',
     'yo',
     'iy',
@@ -141,8 +141,8 @@ function translit ( str ) {
     '-',
     '-'
   ]
-  for ( let i = 0; i < from.length; i++ ) {
-    str = str.replace( new RegExp( from[ i ], 'g' ), replaceTo[ i ] )
+  for (let i = 0; i < from.length; i++) {
+    str = str.replace(new RegExp(from[i], 'g'), replaceTo[i])
   }
   return str
 }
@@ -154,16 +154,16 @@ function translit ( str ) {
  * @param thousandsSeparator
  * @returns {string}
  */
-function number_format ( number, decimals, decPoint, thousandsSeparator ) {
+function numberFormat (number, decimals, decPoint, thousandsSeparator) {
   switch (window.config.locale) {
     case 'ru':
-      if ( isNaN( decimals = Math.abs( decimals ) ) ) {
+      if (isNaN(decimals = Math.abs(decimals))) {
         decimals = 2
       }
-      if ( decPoint === undefined ) {
+      if (decPoint === undefined) {
         decPoint = '.'
       }
-      if ( thousandsSeparator === undefined ) {
+      if (thousandsSeparator === undefined) {
         thousandsSeparator = ' '
       }
       break
@@ -171,61 +171,57 @@ function number_format ( number, decimals, decPoint, thousandsSeparator ) {
     case 'en':
     case 'eu':
     case 'us':
-      if ( isNaN( decimals = Math.abs( decimals ) ) ) {
+      if (isNaN(decimals = Math.abs(decimals))) {
         decimals = 2
       }
-      if ( decPoint === undefined ) {
+      if (decPoint === undefined) {
         decPoint = ','
       }
-      if ( thousandsSeparator === undefined ) {
+      if (thousandsSeparator === undefined) {
         thousandsSeparator = '.'
       }
   }
-  let i,
-    j,
-    kw,
-    kd,
-    km
-  i = parseInt( number = ( +number || 0 ).toFixed( decimals ) ) + ''
-  if ( ( j = i.length ) > 3 ) {
+  let j
+  const i = parseInt(number = (+number || 0).toFixed(decimals)) + ''
+  if ((j = i.length) > 3) {
     j = j % 3
   } else {
     j = 0
   }
-  km = ( j ? i.substr( 0, j ) + thousandsSeparator : '' )
-  kw = i.substr( j )
-    .replace( /(\d{3})(?=\d)/g, '$1' + thousandsSeparator )
-  kd = decimals ? decPoint + Math.abs( number - i )
-    .toFixed( decimals )
-    .replace( /-/, 0 )
-    .slice( 2 ) : ''
+  const km = (j ? i.substr(0, j) + thousandsSeparator : '')
+  const kw = i.substr(j)
+    .replace(/(\d{3})(?=\d)/g, '$1' + thousandsSeparator)
+  const kd = decimals ? decPoint + Math.abs(number - i)
+    .toFixed(decimals)
+    .replace(/-/, 0)
+    .slice(2) : ''
   return km + kw + kd
 }
 
-function generate_password ( len ) {
-  let length = ( len ) ? ( len ) : ( 10 )
-  let string = 'abcdefghijklmnopqrstuvwxyz'
-  let numeric = '0123456789'
+function generatePassword (len) {
+  const length = (len) || (10)
+  const string = 'abcdefghijklmnopqrstuvwxyz'
+  const numeric = '0123456789'
   let password = ''
   let character = ''
   let entity1
   let hold
   let entity2
-  while ( password.length < length ) {
-    entity1 = Math.ceil( string.length * Math.random() * Math.random() )
-    entity2 = Math.ceil( numeric.length * Math.random() * Math.random() )
-    hold = string.charAt( entity1 )
-    hold = ( password.length % 2 === 0 ) ? ( hold.toUpperCase() ) : ( hold )
+  while (password.length < length) {
+    entity1 = Math.ceil(string.length * Math.random() * Math.random())
+    entity2 = Math.ceil(numeric.length * Math.random() * Math.random())
+    hold = string.charAt(entity1)
+    hold = (password.length % 2 === 0) ? (hold.toUpperCase()) : (hold)
     character += hold
-    character += numeric.charAt( entity2 )
+    character += numeric.charAt(entity2)
     password = character
   }
-  password = password.split( '' )
-    .sort( function () {
+  password = password.split('')
+    .sort(function () {
       return 0.5 - Math.random()
-    } )
-    .join( '' )
-  return password.substr( 0, len )
+    })
+    .join('')
+  return password.substr(0, len)
 }
 
 /**
@@ -237,24 +233,24 @@ function generate_password ( len ) {
  * @param   object  next
  * @return  Closure next
  */
-function seo ( to, from, next ) {
-  let id = String(to.params.id),
-      title = to.params.title
-  if ( id !== undefined ) {
-    let pattern = /^([\d]+)-(.*)$/giu;
-    if ( id.match( pattern ) ) {
-      let id = to.params.id.split( '-' ) || null
-      if ( id.length > 0 ) {
-        to.params.id = id[ 0 ]
+function seo (to, from, next) {
+  const id = String(to.params.id)
+  const title = to.params.title
+  if (id !== undefined) {
+    const pattern = /^([\d]+)-(.*)$/giu
+    if (id.match(pattern)) {
+      const id = to.params.id.split('-') || null
+      if (id.length > 0) {
+        to.params.id = id[0]
       }
     }
   }
-  if ( title !== undefined ) {
-    let pattern = /^([\d]+)-(.*)$/giu;
-    if ( title.match( pattern ) ) {
-      let title = to.params.title.split( '-' ) || null
-      if ( title.length > 0 ) {
-        to.params.title = title[ 0 ]
+  if (title !== undefined) {
+    const pattern = /^([\d]+)-(.*)$/giu
+    if (title.match(pattern)) {
+      const title = to.params.title.split('-') || null
+      if (title.length > 0) {
+        to.params.title = title[0]
       }
     }
   }
@@ -263,7 +259,7 @@ function seo ( to, from, next ) {
 
 export {
   translit,
-  number_format,
-  generate_password,
+  numberFormat,
+  generatePassword,
   seo
 }
