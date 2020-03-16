@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Loading from '@/components/Loading'
 // Load layout components dynamically.
 const requireContext = require.context('@/layouts', false, /.*\.vue$/)
@@ -30,11 +31,15 @@ export default {
     layout: null,
     defaultLayout: 'default'
   }),
+  computed: {
+    ...mapGetters({
+      appName: 'config/appName'
+    })
+  },
   metaInfo () {
-    const { appName } = window.config
     return {
-      title: appName,
-      titleTemplate: `%s · ${appName}`
+      title: this.appName,
+      titleTemplate: `%s · ${this.appName}`
     }
   },
   mounted () {

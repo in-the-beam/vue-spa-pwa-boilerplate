@@ -3,9 +3,7 @@ import store from '@/store'
 import { i18n, loadMessages } from '@/plugins/i18n'
 import VueI18n from 'vue-i18n'
 import router from './router'
-import './registerServiceWorker'
 import App from './App.vue'
-
 Vue.use(VueI18n)
 
 ;(async function () {

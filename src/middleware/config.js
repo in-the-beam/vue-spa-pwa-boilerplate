@@ -1,6 +1,6 @@
 import store from '@/store'
 
 export default async (to, from, next) => {
-  await store.dispatch('auth/handshake')
+  await store.dispatch('config/get')
   next()
 }

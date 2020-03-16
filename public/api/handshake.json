@@ -1,8 +1,10 @@
 {
-  "appName": "SPA+PWA",
+  "appName": "Application",
   "locale": "en",
   "locales": {
-    "en": "EN",
-    "ru": "RU"
-  }
+    "en": "English",
+    "ru": "Русский"
+  },
+  "api": "https://api.d.d.dual.help/",
+  "token": "123ABC"
 }

@@ -154,8 +154,8 @@ function translit (str) {
  * @param thousandsSeparator
  * @returns {string}
  */
-function numberFormat (number, decimals, decPoint, thousandsSeparator) {
-  switch (window.config.locale) {
+function numberFormat (number, decimals, decPoint, thousandsSeparator, locale) {
+  switch (locale) {
     case 'ru':
       if (isNaN(decimals = Math.abs(decimals))) {
         decimals = 2

@@ -22,6 +22,9 @@ axios.interceptors.response.use(response => response, error => {
   if (status >= 500) {
     console.error(i18n.t('error_alert_title'), i18n.t('error_alert_text'))
   }
+  if (status === 404) {
+    error = i18n.t('error_alert_title') + '. ' + i18n.t('error_alert_text')
+  }
   if (status === 401 && store.getters['auth/check']) {
     console.warning(i18n.t('token_expired_alert_title'), i18n.t('token_expired_alert_text'))
     // store.commit('auth/LOGOUT')

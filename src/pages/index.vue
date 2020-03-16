@@ -13,11 +13,13 @@ export default {
     return { title: this.$t('home') }
   },
   data: () => ({
-    title: window.config.appName,
     pageTitle: ''
   }),
-  computed: mapGetters({
-  }),
+  computed: {
+    ...mapGetters({
+      title: 'config/appName'
+    })
+  },
   created () {
     this.pageTitle = this.$router.currentRoute.name
   },
