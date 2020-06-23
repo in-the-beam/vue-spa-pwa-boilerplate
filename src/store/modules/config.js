@@ -49,7 +49,7 @@ export const actions = {
   async get ({ commit }) {
     if (state.configured === false) {
       this.dispatch('config/reset')
-      const r = await axios.options('api/handshake.json')
+      const r = await axios.get('/api/handshake.json')
       if (r.status === 200) {
         if (r.data !== undefined) {
           commit(types.CONFIG_CSRF, r.data)
