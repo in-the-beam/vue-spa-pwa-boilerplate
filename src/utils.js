@@ -167,10 +167,10 @@ function numberFormat (number, decimals, decPoint, thousandsSeparator, locale) {
         thousandsSeparator = ' '
       }
       break
-    default:
     case 'en':
     case 'eu':
     case 'us':
+    default:
       if (isNaN(decimals = Math.abs(decimals))) {
         decimals = 2
       }
@@ -191,10 +191,12 @@ function numberFormat (number, decimals, decPoint, thousandsSeparator, locale) {
   const km = (j ? i.substr(0, j) + thousandsSeparator : '')
   const kw = i.substr(j)
     .replace(/(\d{3})(?=\d)/g, '$1' + thousandsSeparator)
-  const kd = decimals ? decPoint + Math.abs(number - i)
-    .toFixed(decimals)
-    .replace(/-/, 0)
-    .slice(2) : ''
+  const kd = decimals
+    ? decPoint + Math.abs(number - i)
+      .toFixed(decimals)
+      .replace(/-/, 0)
+      .slice(2)
+    : ''
   return km + kw + kd
 }
 

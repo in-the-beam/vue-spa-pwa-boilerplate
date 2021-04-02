@@ -61,7 +61,6 @@ export const actions = {
           window.config = r.data
           commit(types.CONFIGURED, { configured: true })
         }
-      } else {
       }
     }
   },

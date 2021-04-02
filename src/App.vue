@@ -2,8 +2,14 @@
   <div id="app">
     App
     <loading ref="loading" />
-    <transition name="page" mode="out-in">
-      <component :is="layout" v-if="layout" />
+    <transition
+      name="page"
+      mode="out-in"
+    >
+      <component
+        :is="layout"
+        v-if="layout"
+      />
     </transition>
   </div>
 </template>
@@ -11,7 +17,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import Loading from '@/components/Loading'
-// Load layout components dynamically.
 const requireContext = require.context('@/layouts', false, /.*\.vue$/)
 const layouts = requireContext.keys()
   .map(file =>
