@@ -5,9 +5,10 @@
   "main": "main.js",
   "scripts": {
     "lint": "vue-cli-service lint",
-    "dev": "vue-cli-service build --mode=development",
-    "prod": "vue-cli-service build --mode=production",
-    "watch": "vue-cli-service build --watch --mode=development",
+    "dev": "vue-cli-service build --mode=development --skip-plugins pwa,workbox",
+    "build": "npm run prod",
+    "prod": "vue-cli-service build --mode=production --skip-plugins pwa,workbox",
+    "watch": "vue-cli-service build --watch --mode=development --skip-plugins pwa,workbox",
     "css-watch": "node-sass src/sass/main.scss -o dist/css -r --output-style expanded --watch --indent-type space --indent-width 2 --importer node_modules/node-sass-import",
     "css-dev": "node-sass src/sass/main.scss -o dist/css -r --output-style expanded --indent-type space --indent-width 2 --importer node_modules/node-sass-import",
     "css-prod": "node-sass src/sass/main.scss -o dist/css/min -r --output-style compressed --indent-type space --indent-width 0 --importer node_modules/node-sass-import"
@@ -22,6 +23,7 @@
     "@babel/preset-env": "^7.13.12",
     "@vue/cli-plugin-babel": "^4.5.12",
     "@vue/cli-plugin-eslint": "^5.0.0-alpha.8",
+    "@vue/cli-plugin-pwa": "^4.5.12",
     "@vue/cli-service": "^4.5.12",
     "babel-loader": "^8.2.2",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
